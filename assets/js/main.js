@@ -17,6 +17,11 @@
   const videoB   = document.getElementById('videoB');
   const videoBg  = document.getElementById('videoBg');
 
+  // En móvil mostrar fondo estático (videos muy pesados para datos móviles)
+  if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth <= 768) {
+    videoBg.classList.add('no-video');
+  } else {
+
   // Filtra solo los videos que existen haciendo un HEAD request
   function checkVideos(list, callback) {
     var valid = [];
@@ -135,6 +140,8 @@
     // Iniciar
     playVideo(0);
   });
+
+  } // fin bloque desktop
 
   // ── Unified scroll handler ───────────────────────────────────────────
   let scrollTicking = false;

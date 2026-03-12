@@ -1008,6 +1008,18 @@ footer {
         background: rgba(3,11,24,0.75);
     }
 
+    /* Fondo estático en móvil en lugar de video */
+    #videoBg.no-video {
+        background-image: url('../uploads/serv-construccion.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    #videoBg.no-video::before {
+        background-image: none;
+        background: rgba(3,11,24,0.55);
+    }
+    #videoBg.no-video::after { display: none; }
+
     .hero-content { max-width: 100%; }
     .hero-brand { font-size: clamp(1.9rem, 8vw, 2.8rem); }
 
