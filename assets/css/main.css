@@ -18,7 +18,7 @@
     padding: 0;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
     font-family: 'Montserrat', sans-serif;
@@ -1027,9 +1027,15 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    /* Marcas: 2 columnas en móvil */
+    /* Marcas: 1 columna en móvil para evitar cortes */
     .brands-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
+    }
+    .brand-item {
+        padding: 1.5rem 1rem;
+    }
+    .brand-inner img {
+        max-height: 40px;
     }
 
     /* WhatsApp flotante: solo ícono en móvil */
