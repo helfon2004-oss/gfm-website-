@@ -964,6 +964,28 @@ footer {
     text-align: center;
 }
 
+.footer-legal-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.footer-legal-links a {
+    font-size: 0.75rem;
+    color: rgba(136,146,176,0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-legal-links a:hover { color: var(--orange); }
+
+.footer-legal-links span {
+    font-size: 0.75rem;
+    color: rgba(136,146,176,0.25);
+}
+
 /* ── Custom Cursor ───────────────────────────────────────────────────── */
 /* (elements are inline on HTML) */
 
