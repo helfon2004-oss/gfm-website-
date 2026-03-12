@@ -991,26 +991,46 @@ footer {
     .nav-links { display: none; }
     #menuBtn { display: flex; }
 
-    h1 { font-size: 2.2rem; }
-    h2 { font-size: 1.7rem; }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.6rem; }
+    p  { max-width: 100%; }
 
+    /* Hero: overlay cubre todo en móvil para legibilidad */
     #overlay {
-        background: linear-gradient(to bottom, rgba(3,11,24,0.85) 60%, transparent 100%);
+        background: rgba(3,11,24,0.75);
     }
 
     .hero-content { max-width: 100%; }
+    .hero-brand { font-size: clamp(1.9rem, 8vw, 2.8rem); }
 
     .contact-layout,
     .business-lines-grid,
     .exp-grid,
-    .sectores-grid,
     .credentials-grid,
-    .brands-grid,
     .footer-grid,
     .metod-grid,
     .portal-features {
         grid-template-columns: 1fr;
     }
+
+    /* Sectores: 2 columnas en móvil */
+    .sectores-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Marcas: 2 columnas en móvil */
+    .brands-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* WhatsApp flotante: solo ícono en móvil */
+    .whatsapp-btn {
+        padding: 0.85rem;
+        border-radius: 50%;
+        font-size: 0;
+        gap: 0;
+    }
+    .whatsapp-btn svg { width: 26px; height: 26px; }
 
     .timeline::before { left: 70px; }
     .timeline-item { grid-template-columns: 70px 16px 1fr; }
@@ -1032,4 +1052,8 @@ footer {
         text-align: center;
     }
     .catalogo-icon { margin: 0 auto; }
+
+    /* Secciones con menos padding vertical */
+    .content-section { padding: 5vh 0; }
+    footer { padding: 3rem 0 2rem; }
 }
