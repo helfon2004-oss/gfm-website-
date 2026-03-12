@@ -5,22 +5,19 @@
 
   // ── Video Carousel ───────────────────────────────────────────────────
   // Agrega aquí los nombres de tus videos en assets/videos/
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth <= 768;
+  var videoPrefix = isMobile ? 'assets/videos/mobile/' : 'assets/videos/';
   const VIDEO_LIST = [
-    'assets/videos/hero1.mp4',
-    'assets/videos/hero2.mp4',
-    'assets/videos/hero3.mp4',
-    'assets/videos/hero4.mp4',
-    'assets/videos/hero5.mp4',
+    videoPrefix + 'hero1.mp4',
+    videoPrefix + 'hero2.mp4',
+    videoPrefix + 'hero3.mp4',
+    videoPrefix + 'hero4.mp4',
+    videoPrefix + 'hero5.mp4',
   ];
 
   const videoA   = document.getElementById('videoA');
   const videoB   = document.getElementById('videoB');
   const videoBg  = document.getElementById('videoBg');
-
-  // En móvil mostrar fondo estático (videos muy pesados para datos móviles)
-  if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth <= 768) {
-    videoBg.classList.add('no-video');
-  } else {
 
   // Filtra solo los videos que existen haciendo un HEAD request
   function checkVideos(list, callback) {
@@ -141,7 +138,6 @@
     playVideo(0);
   });
 
-  } // fin bloque desktop
 
   // ── Unified scroll handler ───────────────────────────────────────────
   let scrollTicking = false;
