@@ -26,7 +26,7 @@
       var xhr = new XMLHttpRequest();
       xhr.open('HEAD', src, true);
       xhr.onload = function() {
-        if (xhr.status === 200) valid.push(src);
+        if (xhr.status >= 200 && xhr.status < 400) valid.push(src);
         checked++;
         if (checked === list.length) callback(valid);
       };

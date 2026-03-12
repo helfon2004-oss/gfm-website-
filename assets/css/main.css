@@ -794,6 +794,14 @@ textarea.form-input { resize: vertical; min-height: 120px; }
     margin-bottom: 1.25rem;
 }
 
+/* ── Misión / Visión ─────────────────────────────────────────────────── */
+.mision-vision-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2.5rem 0;
+}
+
 /* ── Metodología ─────────────────────────────────────────────────────── */
 .metod-grid {
     display: grid;
@@ -1009,7 +1017,8 @@ footer {
     .credentials-grid,
     .footer-grid,
     .metod-grid,
-    .portal-features {
+    .portal-features,
+    .mision-vision-grid {
         grid-template-columns: 1fr;
     }
 
