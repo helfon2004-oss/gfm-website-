@@ -51,9 +51,16 @@
 
     function playVideo(idx) {
       var src = validVideos[idx % validVideos.length];
-      activeVideo.src = src;
       activeVideo.muted = true;
-      activeVideo.load();
+      if (activeVideo.src !== src && !(activeVideo.src.endsWith(src))) {
+        activeVideo.src = src;
+        activeVideo.load();
+      }
+      activeVideo.addEventListener('canplay', function onCanPlay() {
+        activeVideo.removeEventListener('canplay', onCanPlay);
+        var p = activeVideo.play();
+        if (p !== undefined) p.catch(function(){});
+      });
       var p = activeVideo.play();
       if (p !== undefined) p.catch(function(){});
 
