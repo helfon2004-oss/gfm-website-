@@ -119,8 +119,8 @@ p  { font-size: 1rem; color: var(--slate); max-width: 600px; margin-bottom: 1.25
     inset: 0;
     z-index: 3;
     background:
-        linear-gradient(to right, rgba(8,21,37,0.72) 0%, rgba(8,21,37,0.25) 55%, rgba(8,21,37,0.45) 100%),
-        linear-gradient(to top, rgba(8,21,37,0.55) 0%, transparent 40%);
+        linear-gradient(to right, rgba(8,21,37,0.45) 0%, rgba(8,21,37,0.1) 55%, rgba(8,21,37,0.2) 100%),
+        linear-gradient(to top, rgba(8,21,37,0.4) 0%, transparent 35%);
 }
 
 /* Fallback cuando no hay videos: fondo animado */
@@ -303,7 +303,7 @@ p  { font-size: 1rem; color: var(--slate); max-width: 600px; margin-bottom: 1.25
     height: 100vh;
     transition: opacity 0.4s ease;
     /* Left-side gradient so text is readable */
-    background: linear-gradient(to right, rgba(3,11,24,0.9) 0%, rgba(3,11,24,0.65) 40%, transparent 65%);
+    background: linear-gradient(to right, rgba(3,11,24,0.7) 0%, rgba(3,11,24,0.4) 45%, transparent 70%);
     pointer-events: none;
 }
 
