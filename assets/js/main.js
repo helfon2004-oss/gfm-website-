@@ -312,6 +312,17 @@
       var email   = portalForm.querySelector('[name="email"]').value;
       var tel     = portalForm.querySelector('[name="telefono"]').value;
 
+      portalFormBtn.textContent = 'Enviando...';
+      portalFormBtn.disabled = true;
+
+      // Guardar en portal B2B
+      fetch('https://gfm-b2b.vercel.app/api/access-requests', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nombre: nombre, empresa: empresa, rfc: rfc, giro: giro, email: email, telefono: tel })
+      }).catch(function() {});  // Silencioso — WhatsApp es el respaldo
+
+      // Abrir WhatsApp con los datos
       var msg = '🏭 *Solicitud de Acceso al Portal GFM*\n\n'
         + '👤 *Nombre:* ' + nombre + '\n'
         + '🏢 *Empresa:* ' + empresa + '\n'
@@ -320,10 +331,9 @@
         + '📧 *Email:* ' + email + '\n'
         + '📱 *Teléfono:* ' + tel;
 
-      var url = 'https://wa.me/525566743779?text=' + encodeURIComponent(msg);
-      window.open(url, '_blank');
+      window.open('https://wa.me/525566743779?text=' + encodeURIComponent(msg), '_blank');
 
-      portalForm.innerHTML = '<p style="text-align:center;color:var(--white);font-size:1rem;padding:2rem 0;max-width:100%">✓ Solicitud enviada por WhatsApp. Un asesor te contactará en menos de 24 horas.</p>';
+      portalForm.innerHTML = '<p style="text-align:center;color:var(--white);font-size:1rem;padding:2rem 0;max-width:100%">✓ Solicitud enviada. Te contactaremos en menos de 24 horas.</p>';
     });
   }
 
