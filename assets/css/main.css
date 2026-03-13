@@ -314,13 +314,20 @@ p  { font-size: 1rem; color: var(--slate); max-width: 600px; margin-bottom: 1.25
 
 .hero-brand {
     font-family: 'Montserrat', sans-serif;
-    font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+    font-size: clamp(1.8rem, 4vw, 3.2rem);
     font-weight: 800;
     color: var(--white);
     letter-spacing: -0.02em;
     line-height: 1.05;
     margin-bottom: 0.8rem;
     text-shadow: 0 2px 24px rgba(0,0,0,0.85);
+    white-space: nowrap;
+    animation: heroFadeIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes heroFadeIn {
+    0%   { opacity: 0; transform: translateY(30px) skewY(1deg); }
+    100% { opacity: 1; transform: translateY(0) skewY(0deg); }
 }
 
 .hero-tagline {
@@ -330,6 +337,7 @@ p  { font-size: 1rem; color: var(--slate); max-width: 600px; margin-bottom: 1.25
     text-shadow: 0 2px 20px rgba(0,0,0,0.8);
     color: var(--offwhite);
     opacity: 0.85;
+    animation: heroFadeIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
 }
 
 .hero-sub {
@@ -1108,7 +1116,7 @@ footer {
     #videoBg.no-video::after { display: none; }
 
     .hero-content { max-width: 100%; }
-    .hero-brand { font-size: clamp(1.9rem, 8vw, 2.8rem); }
+    .hero-brand { font-size: clamp(1.6rem, 7vw, 2.4rem); white-space: normal; }
 
     .contact-layout,
     .business-lines-grid,
