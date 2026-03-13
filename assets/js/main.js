@@ -305,26 +305,25 @@
   if (portalForm) {
     portalForm.addEventListener('submit', function(e) {
       e.preventDefault();
-      portalFormBtn.textContent = 'Enviando...';
-      portalFormBtn.disabled = true;
-      var data = new FormData(portalForm);
-      fetch(portalForm.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      }).then(function(res) {
-        if (res.ok) {
-          portalForm.innerHTML = '<p style="text-align:center;color:var(--white);font-size:1rem;padding:2rem 0;max-width:100%">✓ Solicitud enviada. Un asesor te contactará en menos de 24 horas.</p>';
-        } else {
-          throw new Error();
-        }
-      }).catch(function() {
-        portalFormMsg.textContent = 'Hubo un error. Escríbenos a ihp@ferreteromarti.com';
-        portalFormMsg.style.color = '#ff6b35';
-        portalFormMsg.style.display = 'block';
-        portalFormBtn.textContent = 'Solicitar Acceso';
-        portalFormBtn.disabled = false;
-      });
+      var nombre  = portalForm.querySelector('[name="nombre"]').value;
+      var empresa = portalForm.querySelector('[name="empresa"]').value;
+      var rfc     = portalForm.querySelector('[name="rfc"]').value;
+      var giro    = portalForm.querySelector('[name="giro"]').value;
+      var email   = portalForm.querySelector('[name="email"]').value;
+      var tel     = portalForm.querySelector('[name="telefono"]').value;
+
+      var msg = '🏭 *Solicitud de Acceso al Portal GFM*\n\n'
+        + '👤 *Nombre:* ' + nombre + '\n'
+        + '🏢 *Empresa:* ' + empresa + '\n'
+        + (rfc ? '📄 *RFC:* ' + rfc + '\n' : '')
+        + '🔧 *Giro:* ' + giro + '\n'
+        + '📧 *Email:* ' + email + '\n'
+        + '📱 *Teléfono:* ' + tel;
+
+      var url = 'https://wa.me/525566743779?text=' + encodeURIComponent(msg);
+      window.open(url, '_blank');
+
+      portalForm.innerHTML = '<p style="text-align:center;color:var(--white);font-size:1rem;padding:2rem 0;max-width:100%">✓ Solicitud enviada por WhatsApp. Un asesor te contactará en menos de 24 horas.</p>';
     });
   }
 
