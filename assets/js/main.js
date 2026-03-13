@@ -268,4 +268,91 @@
     });
   }
 
+  // ── Portal Modal ──────────────────────────────────────────────────────
+  var portalModal      = document.getElementById('portalModal');
+  var portalModalClose = document.getElementById('portalModalClose');
+  var openModalBtns    = document.querySelectorAll('.open-portal-modal');
+  var portalForm       = document.getElementById('portalAccessForm');
+  var portalFormMsg    = document.getElementById('portalFormMsg');
+  var portalFormBtn    = document.getElementById('portalFormBtn');
+
+  function openPortalModal() {
+    portalModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePortalModal() {
+    portalModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  openModalBtns.forEach(function(btn) {
+    btn.addEventListener('click', openPortalModal);
+  });
+
+  if (portalModalClose) {
+    portalModalClose.addEventListener('click', closePortalModal);
+  }
+
+  if (portalModal) {
+    portalModal.addEventListener('click', function(e) {
+      if (e.target === portalModal) closePortalModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closePortalModal();
+    });
+  }
+
+  if (portalForm) {
+    portalForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      portalFormBtn.textContent = 'Enviando...';
+      portalFormBtn.disabled = true;
+      var data = new FormData(portalForm);
+      fetch(portalForm.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(function(res) {
+        if (res.ok) {
+          portalForm.innerHTML = '<p style="text-align:center;color:var(--white);font-size:1rem;padding:2rem 0;max-width:100%">✓ Solicitud enviada. Un asesor te contactará en menos de 24 horas.</p>';
+        } else {
+          throw new Error();
+        }
+      }).catch(function() {
+        portalFormMsg.textContent = 'Hubo un error. Escríbenos a ihp@ferreteromarti.com';
+        portalFormMsg.style.color = '#ff6b35';
+        portalFormMsg.style.display = 'block';
+        portalFormBtn.textContent = 'Solicitar Acceso';
+        portalFormBtn.disabled = false;
+      });
+    });
+  }
+
+  // ── Portal Video ──────────────────────────────────────────────────────
+  var portalVideo       = document.getElementById('portalVideo');
+  var portalPlayBtn     = document.getElementById('portalPlayBtn');
+  var portalPlaceholder = document.getElementById('portalVideoPlaceholder');
+
+  if (portalVideo) {
+    // Mostrar botón de play solo si el video cargó correctamente
+    portalVideo.addEventListener('loadedmetadata', function() {
+      if (portalPlaceholder) portalPlaceholder.style.display = 'none';
+      if (portalPlayBtn) portalPlayBtn.style.display = 'flex';
+    });
+
+    if (portalPlayBtn) {
+      portalPlayBtn.addEventListener('click', function() {
+        portalVideo.play();
+        portalPlayBtn.style.display = 'none';
+      });
+    }
+
+    portalVideo.addEventListener('pause', function() {
+      if (portalPlayBtn) portalPlayBtn.style.display = 'flex';
+    });
+    portalVideo.addEventListener('ended', function() {
+      if (portalPlayBtn) portalPlayBtn.style.display = 'flex';
+    });
+  }
+
 })();

@@ -1185,3 +1185,176 @@ footer {
     .content-section { padding: 5vh 0; }
     footer { padding: 3rem 0 2rem; }
 }
+
+/* ── Portal Modal ─────────────────────────────────────────────────────── */
+.portal-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 21, 37, 0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.portal-modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.portal-modal {
+    background: var(--navy);
+    border: 1px solid rgba(255,107,53,0.2);
+    border-radius: 16px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 560px;
+    position: relative;
+    transform: translateY(24px);
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.portal-modal-overlay.open .portal-modal {
+    transform: translateY(0);
+}
+
+.portal-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    background: none;
+    border: none;
+    color: var(--slate);
+    font-size: 1.75rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+}
+.portal-modal-close:hover { color: var(--white); }
+
+.portal-modal-form { display: flex; flex-direction: column; gap: 1rem; }
+
+.portal-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.portal-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.portal-form-group label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--slate);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.portal-form-group input,
+.portal-form-group select {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    padding: 0.7rem 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.portal-form-group input::placeholder { color: rgba(154,165,192,0.45); }
+.portal-form-group input:focus,
+.portal-form-group select:focus { border-color: var(--orange); }
+.portal-form-group select option { background: var(--navy); color: var(--white); }
+
+/* ── Portal Video Demo ─────────────────────────────────────────────────── */
+.portal-video-section {
+    margin: 3.5rem 0;
+    text-align: center;
+}
+
+.portal-video-wrapper {
+    position: relative;
+    max-width: 820px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    aspect-ratio: 16 / 9;
+    cursor: pointer;
+}
+
+.portal-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.portal-video-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    color: var(--slate);
+    font-size: 0.875rem;
+    pointer-events: none;
+}
+
+.portal-play-btn {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(8, 21, 37, 0.4);
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.portal-play-btn:hover { background: rgba(8, 21, 37, 0.2); }
+
+.portal-play-btn-inner {
+    width: 72px;
+    height: 72px;
+    background: var(--orange);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: transform 0.2s;
+    animation: pulse-play 2.5s infinite;
+}
+.portal-play-btn:hover .portal-play-btn-inner { transform: scale(1.1); }
+
+@keyframes pulse-play {
+    0%   { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.5); }
+    70%  { box-shadow: 0 0 0 20px rgba(255, 107, 53, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0); }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+    .portal-form-row { grid-template-columns: 1fr; }
+    .portal-modal { padding: 1.75rem 1.25rem; }
+}
