@@ -1005,6 +1005,8 @@ textarea.form-input { resize: vertical; min-height: 120px; }
 
 /* ── Footer ──────────────────────────────────────────────────────────── */
 footer {
+    position: relative;
+    z-index: 20;
     background: var(--navy-deep);
     padding: 5rem 0 2rem;
     border-top: 1px solid var(--glass-border);
