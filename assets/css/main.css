@@ -1049,7 +1049,7 @@ footer {
 
 .footer-legal-links a {
     font-size: 0.75rem;
-    color: rgba(136,146,176,0.5);
+    color: rgba(180,190,210,0.85);
     text-decoration: none;
     transition: color 0.2s;
 }
@@ -1058,7 +1058,7 @@ footer {
 
 .footer-legal-links span {
     font-size: 0.75rem;
-    color: rgba(136,146,176,0.25);
+    color: rgba(136,146,176,0.5);
 }
 
 /* ── Custom Cursor ───────────────────────────────────────────────────── */
