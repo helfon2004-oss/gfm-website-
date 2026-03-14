@@ -320,20 +320,19 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ nombre: nombre, empresa: empresa, rfc: rfc, giro: giro, email: email, telefono: tel })
-      }).catch(function() {});  // Silencioso — WhatsApp es el respaldo
-
-      // Abrir WhatsApp con los datos
-      var msg = '🏭 *Solicitud de Acceso al Portal GFM*\n\n'
-        + '👤 *Nombre:* ' + nombre + '\n'
-        + '🏢 *Empresa:* ' + empresa + '\n'
-        + (rfc ? '📄 *RFC:* ' + rfc + '\n' : '')
-        + '🔧 *Giro:* ' + giro + '\n'
-        + '📧 *Email:* ' + email + '\n'
-        + '📱 *Teléfono:* ' + tel;
-
-      window.open('https://wa.me/525566743779?text=' + encodeURIComponent(msg), '_blank');
-
-      portalForm.innerHTML = '<p style="text-align:center;color:var(--white);font-size:1rem;padding:2rem 0;max-width:100%">✓ Solicitud enviada. Te contactaremos en menos de 24 horas.</p>';
+      }).then(function(res) {
+        if (res.ok) {
+          portalForm.innerHTML = '<p style="text-align:center;color:var(--white);font-size:1rem;padding:2rem 0;max-width:100%">✓ Solicitud enviada. Un asesor te contactará en menos de 24 horas.</p>';
+        } else {
+          throw new Error();
+        }
+      }).catch(function() {
+        portalFormMsg.textContent = 'Hubo un error. Escríbenos a ihp@ferreteromarti.com';
+        portalFormMsg.style.color = '#ff6b35';
+        portalFormMsg.style.display = 'block';
+        portalFormBtn.textContent = 'Solicitar Acceso';
+        portalFormBtn.disabled = false;
+      });
     });
   }
 
