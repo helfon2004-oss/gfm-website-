@@ -84,9 +84,7 @@ p  { font-size: 1rem; color: var(--slate); max-width: 600px; margin-bottom: 1.25
 .btn-outline:hover { background-color: var(--orange); }
 
 .glass-panel {
-    background: var(--glass-bg);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(10, 22, 45, 0.94);
     border: 1px solid var(--glass-border);
     border-radius: 12px;
     padding: 2rem;
@@ -99,6 +97,7 @@ p  { font-size: 1rem; color: var(--slate); max-width: 600px; margin-bottom: 1.25
     z-index: 0;
     background: var(--navy-deep);
     overflow: hidden;
+    will-change: transform;
 }
 
 #videoBg video {
@@ -202,9 +201,7 @@ p  { font-size: 1rem; color: var(--slate); max-width: 600px; margin-bottom: 1.25
 }
 
 #main-nav.scrolled {
-    background: rgba(3, 11, 24, 0.95);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(3, 11, 24, 0.97);
     padding: 1rem 0;
     border-bottom: 1px solid var(--glass-border);
 }
