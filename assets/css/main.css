@@ -469,9 +469,11 @@ p  { font-size: 1rem; color: var(--slate); max-width: 600px; margin-bottom: 1.25
 .sector-card p  { font-size: 0.85rem; max-width: 100%; }
 
 /* ── Brands ──────────────────────────────────────────────────────────── */
+/* Flex en lugar de grid: la última fila reparte el ancho sobrante entre
+   sus celdas en vez de dejar un hueco vacío cuando no completan la fila. */
 .brands-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 1px;
     background: var(--glass-border);
     border: 1px solid var(--glass-border);
@@ -481,6 +483,7 @@ p  { font-size: 1rem; color: var(--slate); max-width: 600px; margin-bottom: 1.25
 }
 
 .brand-item {
+    flex: 1 1 calc(25% - 1px);
     background: var(--navy);
     padding: 2.5rem 1.5rem;
     display: flex;
@@ -1138,10 +1141,8 @@ footer {
     }
 
     /* Marcas: 1 columna en móvil para evitar cortes */
-    .brands-grid {
-        grid-template-columns: 1fr;
-    }
     .brand-item {
+        flex-basis: 100%;
         padding: 1.5rem 1rem;
     }
     .brand-inner img {
